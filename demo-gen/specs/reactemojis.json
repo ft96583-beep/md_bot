@@ -1,0 +1,19 @@
+{
+ "cmd": "reactemojis",
+ "desc": "Auto-react ke emojis set karo (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".reactemojis 💗🔥",
+ "output_type": "text",
+ "output_text": "💗 Maujooda react emojis: 💗 ❤️ 🔥 👍 😍 🥰 ✨ 👏 😮 🎉 💯 🤗\n\nSet: *.reactemojis* 💗 🔥 😍",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dreactemojis* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

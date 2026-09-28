@@ -1,0 +1,19 @@
+{
+ "cmd": "accounts",
+ "desc": "Secret: connected numbers dekho",
+ "owner": true,
+ "admin": false,
+ "example": ".accounts",
+ "output_type": "text",
+ "output_text": "📱 *Connected accounts*\n\n1. `923448072653` 🟢 online — *main* (self)\n2. `923492372653` 🔴 offline — worker (:3101, public)\n\n🤫 _Ye command menu mein nahi hai — sirf tumhare liye._",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.daccounts* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

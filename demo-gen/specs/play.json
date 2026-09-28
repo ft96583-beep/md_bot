@@ -1,0 +1,19 @@
+{
+ "cmd": "play",
+ "desc": "YouTube par gaana dhoondo",
+ "owner": false,
+ "admin": false,
+ "example": ".play Moye Moye",
+ "output_type": "text",
+ "output_text": "🔍 Gaana dhoond rahi hoon... 🎵",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "⏳ Download mein thoda *waqt* lag sakta hai — sabar rakho",
+  "🎬 *.dplay* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

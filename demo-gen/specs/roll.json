@@ -1,0 +1,18 @@
+{
+ "cmd": "roll",
+ "desc": "Pasa phenko (NdM)",
+ "owner": false,
+ "admin": false,
+ "example": ".roll",
+ "output_type": "text",
+ "output_text": "🎲 *Roll 1d6* 💗\n\n⚀\n\n✨ Total: *1*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.droll* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

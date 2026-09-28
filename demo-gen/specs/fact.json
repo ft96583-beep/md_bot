@@ -1,0 +1,18 @@
+{
+ "cmd": "fact",
+ "desc": "Random interesting fact",
+ "owner": false,
+ "admin": false,
+ "example": ".fact",
+ "output_type": "text",
+ "output_text": "🧠 *Random Fact* 💗\n\nOak trees do not produce acorns until they are fifty years of age or older.",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dfact* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

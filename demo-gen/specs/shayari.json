@@ -1,0 +1,18 @@
+{
+ "cmd": "shayari",
+ "desc": "Ek khoobsurat shayari",
+ "owner": false,
+ "admin": false,
+ "example": ".shayari",
+ "output_type": "text",
+ "output_text": "✨ *Shayari*\n\nPhoolon se khushbu aati hai, kaanton se nahi,\nIshq mein dard milta hai, aaraam se nahi! 🥀",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dshayari* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

@@ -1,0 +1,19 @@
+{
+ "cmd": "aichat",
+ "desc": "Auto AI reply: on/off/auto (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".aichat on",
+ "output_type": "text",
+ "output_text": "❌ Usage: *.aichat <on|off|auto>*\n\nMaujooda: *SMART AUTO 🤖 (unknown number par khud on hoga)*\n\n• *on* — har msg ka jawab\n• *off* — bilkul band\n• *auto* — smart mode (unknown number par khud on)",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.daichat* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

@@ -1,0 +1,19 @@
+{
+ "cmd": "setname",
+ "desc": "Bot ka WhatsApp naam change karo (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".setname NEXORA-MD",
+ "output_type": "text",
+ "output_text": "❌ Usage: *.setname <naya naam>*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dsetname* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

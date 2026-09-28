@@ -1,0 +1,19 @@
+{
+ "cmd": "kick",
+ "desc": "Member nikalo (admin — tag ya reply)",
+ "owner": false,
+ "admin": true,
+ "example": ".kick @0321xxxxxxx",
+ "output_type": "text",
+ "output_text": "❌ Kisi ko tag karein ya uske message ke reply mein *.kick* likhein.",
+ "steps": [
+  "Group kholo — member ko *tag* karo ya uske message par reply karo",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🛡️ Is ke liye *group admin* hona zaroori hai",
+  "🎬 *.dkick* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

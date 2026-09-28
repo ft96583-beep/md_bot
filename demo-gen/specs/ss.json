@@ -1,0 +1,19 @@
+{
+ "cmd": "ss",
+ "desc": "Kisi bhi website ka screenshot lo",
+ "owner": false,
+ "admin": false,
+ "example": ".ss google.com",
+ "output_type": "text",
+ "output_text": "📸 Usage: *.ss <link>*\nMasalan: *.ss google.com*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "⏳ Download mein thoda *waqt* lag sakta hai — sabar rakho",
+  "🎬 *.dss* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

@@ -1,0 +1,19 @@
+{
+ "cmd": "setwelcome",
+ "desc": "Welcome ka custom text set karo (admin)",
+ "owner": false,
+ "admin": true,
+ "example": ".setwelcome Khush amdeed! 🌸",
+ "output_type": "text",
+ "output_text": "📝 Maujooda welcome text:\n_(default)_\n\nSet karo: *.setwelcome Khush aamdeed @user! 💗*\n(@user = naye member ka naam)",
+ "steps": [
+  "Bot jis *group* mein hai, wahan jao 👥",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🛡️ Is ke liye *group admin* hona zaroori hai",
+  "🎬 *.dsetwelcome* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

@@ -1,0 +1,19 @@
+{
+ "cmd": "antidelete",
+ "desc": "Delete kiye gaye messages pakro (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".antidelete on",
+ "output_type": "text",
+ "output_text": "🗑️ *Anti-delete*\n\nMaujooda: *ON ✅*\nYaad mein: *150* messages\n\nON karne ke liye: *.antidelete on*\n_Note: sirf \"delete for everyone\" pakra jata hai — jo message bot ke online hone ke baad aaya ho._",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dantidelete* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

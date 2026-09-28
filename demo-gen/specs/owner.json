@@ -1,0 +1,18 @@
+{
+ "cmd": "owner",
+ "desc": "Owner se rabta (identity private)",
+ "owner": false,
+ "admin": false,
+ "example": ".owner",
+ "output_type": "text",
+ "output_text": "👑 *NEXORA-MD Owner*\n\n🔒 Owner ki identity private hai — number show nahi hota.\n\n📩 Rabta karne ke liye likhein:\n*.contact* <aapka paigham>\n\nAapka paigham seedha owner tak pahunchega 💗\n\n🤖 _Aap bhi aisa bot chahte hain? *.contact* likh kar message bhejein — jawab aapke inbox mein milega ✨_",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.downer* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

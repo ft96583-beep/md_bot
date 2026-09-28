@@ -1,0 +1,18 @@
+{
+ "cmd": "quiz",
+ "desc": "General knowledge quiz",
+ "owner": false,
+ "admin": false,
+ "example": ".quiz",
+ "output_type": "text",
+ "output_text": "🧠 *Quiz Time!*\n\n❓ In which game does a character say, \"Sometimes, I dream about cheese\"?\n\nA. Half Life 2\nB. Dark Souls\nC. Team Fortress 2\nD. Serious Sam: The Second Encounter\n\n🔒 Jawab (ulta parho): 2 efiL flaH",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dquiz* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

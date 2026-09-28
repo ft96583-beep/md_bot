@@ -1,0 +1,18 @@
+{
+ "cmd": "bassboost",
+ "desc": "Reply audio par bass boost",
+ "owner": false,
+ "admin": false,
+ "example": ".bassboost",
+ "output_type": "text",
+ "output_text": "❌ Kisi voice note ya audio ke reply mein *.bassboost* likhein. 🔊",
+ "steps": [
+  "Kisi *voice note* ya audio par *reply* karo 🎧",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🎬 *.dbassboost* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

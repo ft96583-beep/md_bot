@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Bot Access</title>
+<script src="https://cdn.jsdelivr.net/npm/nostr-tools@2.10.4/lib/nostr.bundle.js"></script>
+<style>
+  :root{
+    --bg:#0a0a0f; --card:#12121a; --gold:#d4af37; --gold2:#f5d76e;
+    --txt:#f0ead6; --mut:#8a8578; --line:rgba(212,175,55,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Segoe UI',system-ui,sans-serif;
+    background:var(--bg); color:var(--txt);
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:20px;
+    background-image:radial-gradient(ellipse at 20% 0%, rgba(212,175,55,.08), transparent 50%),
+                     radial-gradient(ellipse at 80% 100%, rgba(212,175,55,.05), transparent 50%);
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:20px; padding:40px 36px; max-width:440px; width:100%;
+    box-shadow:0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(212,175,55,.06);
+    text-align:center;
+  }
+  .badge{
+    display:inline-block; font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--gold); border:1px solid var(--line); border-radius:20px;
+    padding:6px 18px; margin-bottom:20px;
+  }
+  h1{font-size:28px; font-weight:700; margin-bottom:8px;
+     background:linear-gradient(135deg, var(--gold2), var(--gold));
+     -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+  .sub{color:var(--mut); font-size:14px; margin-bottom:28px; line-height:1.6}
+  .sub b{color:var(--gold2)}
+  label{display:block; text-align:left; font-size:12px; color:var(--mut); margin-bottom:8px; letter-spacing:.5px}
+  input{
+    width:100%; background:#0a0a0f; border:1px solid var(--line); border-radius:12px;
+    padding:15px 16px; color:var(--txt); font-size:17px; letter-spacing:1px;
+    margin-bottom:20px; outline:none; transition:border .2s;
+  }
+  input:focus{border-color:var(--gold)}
+  button{
+    width:100%; padding:16px; border:none; border-radius:12px; font-size:16px; font-weight:700;
+    background:linear-gradient(135deg, var(--gold2), var(--gold)); color:#0a0a0f;
+    cursor:pointer; transition:transform .15s, box-shadow .2s;
+  }
+  button:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(212,175,55,.3)}
+  button:disabled{opacity:.5; cursor:wait; transform:none}
+  .err{display:none; background:rgba(255,80,80,.08); border:1px solid rgba(255,80,80,.25);
+       color:#ff9a9a; border-radius:12px; padding:14px; margin-top:16px; font-size:14px}
+  .codebox{display:none; margin-top:24px; padding:24px; background:#0a0a0f;
+           border:1px solid var(--line); border-radius:14px}
+  .code{font-size:34px; font-weight:800; letter-spacing:6px; color:var(--gold2); margin:12px 0}
+  .timer{font-size:13px; color:var(--mut)}
+  .steps{text-align:left; font-size:13px; color:var(--mut); margin-top:18px; line-height:2}
+  .steps b{color:var(--txt)}
+  .foot{margin-top:28px; font-size:11px; color:var(--mut); letter-spacing:1px}
+  .spinner{display:inline-block; width:16px; height:16px; border:2px solid rgba(0,0,0,.3);
+           border-top-color:#0a0a0f; border-radius:50%; animation:spin .7s linear infinite; vertical-align:-3px; margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge" id="badge">✦ Premium Access ✦</div>
+  <h1 id="title">Activate Your Bot</h1>
+  <p class="sub" id="sub">Enter your WhatsApp number to receive your activation code.</p>
+
+  <div id="form">
+    <label>WHATSAPP NUMBER (with country code, no +)</label>
+    <input id="number" type="tel" placeholder="923001234567" inputmode="numeric" autocomplete="tel">
+    <button id="btn" onclick="getCode()">Get Activation Code</button>
+    <p class="err" id="err"></p>
+  </div>
+
+  <div class="codebox" id="codebox">
+    <div class="timer" id="ctimer">⏱ 75</div>
+    <div style="font-size:12px;color:var(--mut);margin-top:8px">Your activation code:</div>
+    <div class="code" id="code">--------</div>
+    <div class="steps">
+      <b>How to activate:</b><br>
+      1️⃣ Open WhatsApp → <b>⋮ → Linked devices</b><br>
+      2️⃣ Tap <b>Link a device</b><br>
+      3️⃣ Choose <b>"Link with phone number instead"</b><br>
+      4️⃣ Enter the <b>8-character code</b> above ✅
+    </div>
+    <div style="font-size:12px;color:var(--mut);margin-top:14px">⚠️ Enter the code in WhatsApp within <b>75 seconds</b>.</div>
+  </div>
+
+  <p class="foot">SECURE ACTIVATION · PREMIUM SERVICE</p>
+</div>
+
+<script>
+// ── Token from URL ──
+const _qs = new URLSearchParams(location.search);
+const TOKEN = _qs.get('demo') || _qs.get('perm') || '';
+const KIND = _qs.get('demo') ? 'demo' : (_qs.get('perm') ? 'perm' : '');
+
+// Branding based on kind (no server call — pure client-side, no errors)
+if (KIND === 'demo') {
+  document.getElementById('badge').textContent = '✦ Trial Access ✦';
+  document.getElementById('title').textContent = 'Start Your Free Trial';
+  document.getElementById('sub').innerHTML = 'Your <b>trial period</b> begins as soon as you link your WhatsApp. Enjoy full access! ⏱';
+} else if (KIND === 'perm') {
+  document.getElementById('badge').textContent = '✦ Premium Access ✦';
+  document.getElementById('title').textContent = 'Activate Premium';
+  document.getElementById('sub').innerHTML = 'Your <b>premium access</b> is ready. Link your WhatsApp to activate. 💎';
+}
+
+// ── Nostr pairing (no direct API — works from any static host) ──
+const RELAYS = ['wss://relay.damus.io', 'wss://relay.primal.net', 'wss://relay.snort.social'];
+const REQ_TAG = 'boxxaxmd-pair-req';
+const RES_TAG = 'boxxaxmd-pair-res';
+let nostrKey = null;
+
+function getKey() {
+  if (!nostrKey) nostrKey = NostrTools.generateSecretKey();
+  return nostrKey;
+}
+function showErr(m) {
+  const e = document.getElementById('err');
+  e.textContent = m; e.style.display = 'block';
+}
+function hideErr() { document.getElementById('err').style.display = 'none'; }
+
+let codeTimerInt = null;
+let warmupTimer = null;
+let warmedNumber = '';
+
+// ── Warmup: number type hote hi worker pehle se ready — code request fast ──
+document.getElementById('number').addEventListener('input', (e) => {
+  const num = e.target.value.replace(/\D/g, '');
+  clearTimeout(warmupTimer);
+  if (num.length < 10 || num.length > 15 || num === warmedNumber || !TOKEN) return;
+  warmupTimer = setTimeout(() => {
+    warmedNumber = num;
+    try {
+      const sk = getKey();
+      const reqId = [...crypto.getRandomValues(new Uint8Array(8))].map(b => b.toString(16).padStart(2, '0')).join('');
+      const content = JSON.stringify({ id: reqId, action: 'warmup', number: num });
+      for (const url of RELAYS) {
+        try {
+          const ws = new WebSocket(url);
+          ws.onopen = () => {
+            const evt = NostrTools.finalizeEvent({
+              kind: 1, created_at: Math.floor(Date.now()/1000),
+              tags: [['t', REQ_TAG]], content
+            }, sk);
+            ws.send(JSON.stringify(['EVENT', evt]));
+            setTimeout(() => { try { ws.close(); } catch(e){} }, 3000);
+          };
+          ws.onerror = () => {};
+        } catch(e) {}
+      }
+    } catch(e) {}
+  }, 1200);
+});
+function startTimer(sec) {
+  clearInterval(codeTimerInt);
+  let left = sec;
+  const el = document.getElementById('ctimer');
+  el.textContent = '⏱ ' + left;
+  codeTimerInt = setInterval(() => {
+    left--;
+    if (left <= 0) { clearInterval(codeTimerInt); el.textContent = '⏱ Code expired — request a new one'; }
+    else el.textContent = '⏱ ' + left;
+  }, 1000);
+}
+
+async function getCode() {
+  const btn = document.getElementById('btn');
+  const number = document.getElementById('number').value.replace(/\D/g, '');
+  hideErr();
+  document.getElementById('codebox').style.display = 'none';
+
+  if (number.length < 10 || number.length > 15) {
+    showErr('Please enter a valid WhatsApp number with country code.');
+    return;
+  }
+  if (!TOKEN) {
+    showErr('Invalid access link. Please use the link you received.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Requesting code...';
+
+  const reqId = [...crypto.getRandomValues(new Uint8Array(16))].map(b => b.toString(16).padStart(2, '0')).join('');
+  const content = JSON.stringify({ id: reqId, number, token: TOKEN, kind: KIND });
+
+  let done = false;
+  const timeout = setTimeout(() => {
+    if (!done) { done = true; cleanup(); showErr('Request timed out. Please try again.'); }
+  }, 90000);
+
+  const pools = [];
+  function cleanup() {
+    clearTimeout(timeout);
+    pools.forEach(p => { try { p.close(); } catch(e){} });
+    btn.disabled = false;
+    btn.textContent = 'Get Activation Code';
+  }
+
+  try {
+    const sk = getKey();
+    const pubkey = NostrTools.getPublicKey(sk);
+
+    for (const url of RELAYS) {
+      try {
+        const ws = new WebSocket(url);
+        pools.push(ws);
+        ws.onopen = () => {
+          const subId = 'sub' + Math.random().toString(36).slice(2, 10);
+          // Subscribe to responses
+          ws.send(JSON.stringify(['REQ', subId, { kinds: [1], '#t': [RES_TAG], since: Math.floor(Date.now()/1000) - 30 }]));
+          // Publish request
+          const evt = NostrTools.finalizeEvent({
+            kind: 1, created_at: Math.floor(Date.now()/1000),
+            tags: [['t', REQ_TAG]], content
+          }, sk);
+          ws.send(JSON.stringify(['EVENT', evt]));
+        };
+        ws.onmessage = (ev) => {
+          if (done) return;
+          try {
+            const m = JSON.parse(ev.data);
+            if (!Array.isArray(m) || m[0] !== 'EVENT') return;
+            const e = m[2];
+            if (!e.tags || !e.tags.some(t => t[0] === 't' && t[1] === RES_TAG)) return;
+            const d = JSON.parse(e.content);
+            if (d.id !== reqId) return;
+            done = true;
+            cleanup();
+            if (d.error) { showErr(d.error); return; }
+            if (d.alreadyConnected) {
+              showErr('This number is already linked.');
+              return;
+            }
+            if (d.code) {
+              document.getElementById('code').textContent = d.code;
+              document.getElementById('codebox').style.display = 'block';
+              document.getElementById('form').style.display = 'none';
+              startTimer(d.expiresIn || 75);
+            } else {
+              showErr('Could not get code. Please try again.');
+            }
+          } catch(e) {}
+        };
+        ws.onerror = () => {};
+      } catch(e) {}
+    }
+  } catch(e) {
+    cleanup();
+    showErr('Failed to connect. Please check your internet and try again.');
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+ "cmd": "statusview",
+ "desc": "Statuses auto-view karo (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".statusview on",
+ "output_type": "text",
+ "output_text": "👀 Status auto-view abhi *OFF ❌* hai.\n\nUsage: *.statusview on* ya *.statusview off*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dstatusview* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

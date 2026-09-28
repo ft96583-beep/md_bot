@@ -1,0 +1,21 @@
+{
+ "cmd": "contact",
+ "desc": "Owner ko paigham bhejo — owner panel se reply karega, identity private",
+ "owner": false,
+ "admin": false,
+ "example": ".contact Assalam o Alaikum! Mujhe apna bot chahiye",
+ "output_type": "text",
+ "output_text": "✅ Paigham owner tak pahunch gaya!\nJawab aapke inbox mein aayega 💗",
+ "steps": [
+  "NEXORA-MD wali chat kholo (koi bhi number) 💬",
+  "Apna paigham likho aur *bhejo* ➤",
+  "Jawab tumhare *inbox* mein aayega — intezar karo 💗"
+ ],
+ "notes": [
+  "📩 Tumhara paigham seedha *private Owner Panel* mein jata hai",
+  "🤫 Owner ki identity aur number *chhupay* rehte hain",
+  "👑 Owner panel se jawab dega",
+  "💗 Tumhein milega: *👑 Owner ka jawab 💗*"
+ ],
+ "time": "2:47 pm"
+}

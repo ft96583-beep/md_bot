@@ -1,0 +1,19 @@
+{
+ "cmd": "self",
+ "desc": "Self mode ON: sirf owner (connected number) commands use kare (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".self",
+ "output_type": "text",
+ "output_text": "🔒 *Self mode ON* 💗\n\nAb sirf aap (connected number) commands use kar sakte ho. Baqi sab ke commands band hain.",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dself* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

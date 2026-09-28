@@ -1,0 +1,19 @@
+{
+ "cmd": "activity",
+ "desc": "Recent bot activity: kaun ne kya command chalai (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".activity",
+ "output_type": "text",
+ "output_text": "📭 Abhi tak kisi ne koi command nahi chalai.",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dactivity* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

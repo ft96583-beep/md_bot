@@ -1,0 +1,18 @@
+{
+ "cmd": "meme",
+ "desc": "Mashhoor templates par apna meme banao",
+ "owner": false,
+ "admin": false,
+ "example": ".meme Kaam | Jaldi karo | Phir chai piyo",
+ "output_type": "text",
+ "output_text": "🎭 *Meme banao*\n\nUsage: *.meme <template> | <upar wali line> | <neeche wali line>*\nMasalan: *.meme drake | purana bot | NEXORA-MD*\n\nTemplates: *.meme list*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dmeme* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

@@ -1,0 +1,20 @@
+{
+ "cmd": "menu",
+ "desc": "Saare commands dekho",
+ "owner": false,
+ "admin": false,
+ "example": ".menu",
+ "output_type": "image",
+ "output_text": "💗 *NEXORA-MD* — Main Nexa hoon ✨\n🟢 Online · Prefix *.*\n\nBolo, kya karoon? 👇",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🖼️ Jawab mein *photo/video* aayegi",
+  "📜 Poori command list *tasveer* mein aayegi",
+  "🎬 *.dmenu* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

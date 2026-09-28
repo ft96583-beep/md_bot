@@ -1,0 +1,19 @@
+{
+ "cmd": "autoread",
+ "desc": "Messages par foran blue tick (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".autoread on",
+ "output_type": "text",
+ "output_text": "👁 Autoread abhi *OFF ❌* hai.\n\nUsage: *.autoread on* ya *.autoread off*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dautoread* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

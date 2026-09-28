@@ -1,0 +1,19 @@
+{
+ "cmd": "autoreact",
+ "desc": "Har message par auto emoji react (on/off)",
+ "owner": true,
+ "admin": false,
+ "example": ".autoreact on",
+ "output_type": "text",
+ "output_text": "💗 Auto-react abhi *OFF* hai.\n\nUsage: *.autoreact on* ya *.autoreact off*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dautoreact* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

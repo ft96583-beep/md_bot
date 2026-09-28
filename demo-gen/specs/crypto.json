@@ -1,0 +1,18 @@
+{
+ "cmd": "crypto",
+ "desc": "Crypto price (USD + PKR)",
+ "owner": false,
+ "admin": false,
+ "example": ".crypto BTC",
+ "output_type": "text",
+ "output_text": "🪙 *Bitcoin (BTC)*\n💵 $85,907\n💷 PKR 23,827,454\n📈 24h: +1.27%",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dcrypto* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

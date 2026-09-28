@@ -1,0 +1,18 @@
+{
+ "cmd": "botdp",
+ "desc": "Bot ki apni DP dekho",
+ "owner": false,
+ "admin": false,
+ "example": ".botdp",
+ "output_type": "text",
+ "output_text": "❌ DP nahi mil saki.",
+ "steps": [
+  "Koi *photo* bhejo aur us par *reply* karo",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🎬 *.dbotdp* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

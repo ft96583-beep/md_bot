@@ -1,0 +1,18 @@
+{
+ "cmd": "country",
+ "desc": "Mulk ki maloomat",
+ "owner": false,
+ "admin": false,
+ "example": ".country Pakistan",
+ "output_type": "text",
+ "output_text": "❌ Usage: *.country <mulk>*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🎬 *.dcountry* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

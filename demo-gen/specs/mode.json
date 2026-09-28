@@ -1,0 +1,19 @@
+{
+ "cmd": "mode",
+ "desc": "Bot mode: public ya self (owner) — quick: .self / .public",
+ "owner": true,
+ "admin": false,
+ "example": ".mode self",
+ "output_type": "text",
+ "output_text": "❌ Usage: *.mode <public|self>* (ya seedha *.self* / *.public*)\n\npublic — sab use kar sakte hain\nself — sirf aap (connected number) use kar sakta hai\n\nMaujooda mode: *self*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dmode* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@chaeulso/baileys": "^7.5.0",
+    "express": "^4.19.2",
+    "qrcode": "^1.5.4",
+    "https-proxy-agent": "^7.0.6"
+  },
+  "description": "NEXORA-MD pair portal \u2014 pairing karke SESSION_ID deta hai (JAWAD-style)",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "portal.js",
+  "name": "nexora-pair-portal",
+  "private": true,
+  "scripts": {
+    "start": "node portal.js"
+  },
+  "version": "1.0.0"
+}

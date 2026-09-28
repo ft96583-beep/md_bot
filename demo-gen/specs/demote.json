@@ -1,0 +1,19 @@
+{
+ "cmd": "demote",
+ "desc": "Admin se hatao (admin — tag ya reply)",
+ "owner": false,
+ "admin": true,
+ "example": ".demote @0321xxxxxxx",
+ "output_type": "text",
+ "output_text": "❌ Tag karein ya reply karein.",
+ "steps": [
+  "Group kholo — member ko *tag* karo ya uske message par reply karo",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🛡️ Is ke liye *group admin* hona zaroori hai",
+  "🎬 *.ddemote* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

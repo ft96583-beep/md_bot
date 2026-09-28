@@ -1,0 +1,19 @@
+{
+ "cmd": "vv2",
+ "desc": "View-once unlock — media jisne use kiya uski apni private chat mein (vv jaisa, reply)",
+ "owner": false,
+ "admin": false,
+ "example": ".vv2",
+ "output_type": "text",
+ "output_text": "❌ Kisi view-once photo/video/voice ke reply mein *.vv2* likhein.\n\n💡 *Tip:* View-once par seedha koi sticker ya word se reply karein — bina command likhe khud-ba-khud yourself mein aa jayega.",
+ "steps": [
+  "Koi *view-once* photo/video kholo 👁️",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "👁️ View-once ke *reply* mein likho — jaise .vv",
+  "📩 Media owner ke *private inbox* mein jata hai"
+ ],
+ "time": "2:47 pm"
+}

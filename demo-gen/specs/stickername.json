@@ -1,0 +1,19 @@
+{
+ "cmd": "stickername",
+ "desc": "Sticker pack ka naam set karo (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".stickername Nexa | NEXORA-MD",
+ "output_type": "text",
+ "output_text": "🏷️ Maujooda sticker naam: *(koi nahi)*\n\nSet: *.stickername <naam>*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dstickername* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

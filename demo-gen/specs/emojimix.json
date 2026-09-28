@@ -1,0 +1,18 @@
+{
+ "cmd": "emojimix",
+ "desc": "Do emoji milao → naya sticker",
+ "owner": false,
+ "admin": false,
+ "example": ".emojimix 😂❤️",
+ "output_type": "text",
+ "output_text": "🧪 *Emoji Mix*\n\nUsage: *.emojimix* 🥺🔥\n\nDo emoji aik saath likho — main unhein mila kar naya sticker banaongi! 💗",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.demojimix* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

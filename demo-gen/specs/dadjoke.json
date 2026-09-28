@@ -1,0 +1,18 @@
+{
+ "cmd": "dadjoke",
+ "desc": "Dad joke sunao",
+ "owner": false,
+ "admin": false,
+ "example": ".dadjoke",
+ "output_type": "text",
+ "output_text": "😂 *Dad Joke* 💗\n\nTwo guys walked into a bar, the third one ducked.",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.ddadjoke* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

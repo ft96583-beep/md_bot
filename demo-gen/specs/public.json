@@ -1,0 +1,19 @@
+{
+ "cmd": "public",
+ "desc": "Public mode ON: har koi commands use kare (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".public",
+ "output_type": "text",
+ "output_text": "🌐 *Public mode ON* 💗\n\nAb har koi commands use kar sakta hai.",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dpublic* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

@@ -1,0 +1,19 @@
+{
+ "cmd": "users",
+ "desc": "Bot use karne walon ki list (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".users",
+ "output_type": "text",
+ "output_text": "📭 Abhi tak koi user nahi.",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dusers* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

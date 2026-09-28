@@ -1,0 +1,18 @@
+{
+ "cmd": "coin",
+ "desc": "Sikka uchhalo (head/tail)",
+ "owner": false,
+ "admin": false,
+ "example": ".coin",
+ "output_type": "text",
+ "output_text": "🪙 *HEAD!* 💗\n\nJeet gaye! 🎉",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dcoin* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

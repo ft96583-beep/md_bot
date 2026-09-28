@@ -1,0 +1,19 @@
+{
+ "cmd": "ig",
+ "desc": "Instagram reel/post download",
+ "owner": false,
+ "admin": false,
+ "example": ".ig https://www.instagram.com/reel/DBxYz12345ab/",
+ "output_type": "text",
+ "output_text": "❌ Usage: *.ig <instagram-link>*",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "⏳ Download mein thoda *waqt* lag sakta hai — sabar rakho",
+  "🎬 *.dig* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

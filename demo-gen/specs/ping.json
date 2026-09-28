@@ -1,0 +1,18 @@
+{
+ "cmd": "ping",
+ "desc": "Bot ki speed check karo",
+ "owner": false,
+ "admin": false,
+ "example": ".ping",
+ "output_type": "text",
+ "output_text": "🏓 Pong!",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dping* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

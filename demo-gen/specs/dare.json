@@ -1,0 +1,18 @@
+{
+ "cmd": "dare",
+ "desc": "Dare challenge (safe/mazaq)",
+ "owner": false,
+ "admin": false,
+ "example": ".dare",
+ "output_type": "text",
+ "output_text": "😈 *DARE* 💗\n\n10 push-ups karo aur video bhejo! 💪\n\n_Himmat hai to karke dikhao!_",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.ddare* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

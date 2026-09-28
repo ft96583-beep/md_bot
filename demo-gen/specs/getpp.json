@@ -1,0 +1,18 @@
+{
+ "cmd": "getpp",
+ "desc": "Profile photo nikalo (reply ya tag)",
+ "owner": false,
+ "admin": false,
+ "example": ".getpp",
+ "output_type": "text",
+ "output_text": "❌ Profile photo nahi mili (privacy settings ki wajah se).",
+ "steps": [
+  "Kisi ke message par *reply* karo (ya number likho)",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🎬 *.dgetpp* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

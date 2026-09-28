@@ -1,0 +1,18 @@
+{
+ "cmd": "botstats",
+ "desc": "System health: uptime, RAM, commands",
+ "owner": false,
+ "admin": false,
+ "example": ".botstats",
+ "output_type": "text",
+ "output_text": "🤖 *NEXORA-MD — System Health*\n\n⏱ Uptime: 0h 0m 11s\n🧠 RAM: 165.9 MB\n📦 Commands: 159\n📡 Mode: self\n🛡 Anti-ban rate-limit: ON\n🔁 Auto-restart: ON\n💾 Session backup: ON\n\n_⚡ POWERED BY NEXORA_",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dbotstats* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

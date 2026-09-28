@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NEXORA-MD — WhatsApp Pairing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#001619; --card:#062529; --cyan:#50E8F4; --mint:#6DD5C4;
+    --lc:#C7F8FE; --tx:#EAF7F8; --mut:#7FA3A7; --err:#ff8a8a; --ok:#7dffa8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    background:var(--bg); color:var(--tx);
+    font-family:Inter,system-ui,-apple-system,sans-serif;
+    min-height:100vh; overflow-x:hidden;
+    display:flex; align-items:center; justify-content:center;
+    padding:28px 18px 60px;
+  }
+  /* ---------- background layers ---------- */
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;mix-blend-mode:screen}
+  .b1{width:52vmax;height:52vmax;left:-14vmax;top:-14vmax;background:radial-gradient(circle,rgba(80,232,244,.35),transparent 70%);animation:drift1 22s ease-in-out infinite alternate}
+  .b2{width:46vmax;height:46vmax;right:-12vmax;top:22%;background:radial-gradient(circle,rgba(109,213,196,.30),transparent 70%);animation:drift2 26s ease-in-out infinite alternate}
+  .b3{width:40vmax;height:40vmax;left:22%;bottom:-16vmax;background:radial-gradient(circle,rgba(150,120,255,.22),transparent 70%);animation:drift1 30s ease-in-out infinite alternate-reverse}
+  @keyframes drift1{to{transform:translate(9vmax,7vmax) scale(1.12)}}
+  @keyframes drift2{to{transform:translate(-8vmax,-6vmax) scale(1.08)}}
+  .orb{position:fixed;z-index:0;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle at 32% 30%,rgba(199,248,254,.9),rgba(80,232,244,.25) 45%,transparent 72%);
+    box-shadow:0 0 40px rgba(80,232,244,.35), inset -6px -8px 18px rgba(0,22,25,.45);
+    animation:floaty 7s ease-in-out infinite}
+  .orb.o1{width:64px;height:64px;left:8%;top:16%}
+  .orb.o2{width:38px;height:38px;right:10%;top:30%;animation-delay:-2s;animation-duration:9s}
+  .orb.o3{width:88px;height:88px;right:16%;bottom:12%;animation-delay:-4s;animation-duration:11s}
+  .orb.o4{width:30px;height:30px;left:14%;bottom:20%;animation-delay:-1s;animation-duration:8s}
+  @keyframes floaty{0%,100%{transform:translateY(0) translateZ(0)}50%{transform:translateY(-26px)}}
+  .floater{position:fixed;z-index:0;pointer-events:none;filter:drop-shadow(0 6px 12px rgba(0,0,0,.4));animation:floaty 8s ease-in-out infinite}
+  .floater.f1{left:6%;top:52%;font-size:34px;animation-delay:-3s}
+  .floater.f2{right:7%;top:58%;font-size:30px;animation-delay:-5s;animation-duration:10s}
+  .floater.f3{left:12%;top:8%;font-size:24px;animation-delay:-2s;animation-duration:9s}
+  .floater.f4{right:12%;top:8%;font-size:26px;animation-delay:-6s}
+
+  /* ---------- 3D scene ---------- */
+  .scene{position:relative;z-index:2;perspective:1400px;width:100%;max-width:480px}
+  .tilt{transform-style:preserve-3d;will-change:transform}
+  .card{
+    position:relative;transform-style:preserve-3d;
+    background:linear-gradient(160deg,rgba(10,48,54,.92),rgba(6,37,41,.88));
+    border:1px solid rgba(80,232,244,.22);border-radius:28px;
+    padding:34px 28px 28px;text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(80,232,244,.10),inset 0 1px 0 rgba(199,248,254,.12);
+    backdrop-filter:blur(14px);
+    animation:cardIn .8s cubic-bezier(.2,.9,.25,1.2) both;
+  }
+  @keyframes cardIn{from{opacity:0;transform:translateY(36px) scale(.96)}to{opacity:1;transform:none}}
+  .card::before{ /* top glow line */
+    content:"";position:absolute;top:0;left:10%;right:10%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.7;
+  }
+
+  .logo-wrap{position:relative;transform:translateZ(70px);margin-bottom:2px}
+  .ring{position:absolute;left:50%;top:50%;width:190px;height:190px;transform:translate(-50%,-58%);
+    border-radius:50%;pointer-events:none;opacity:.5;
+    background:conic-gradient(from 0deg,transparent 0 70%,rgba(80,232,244,.5) 82%,transparent 96%);
+    -webkit-mask:radial-gradient(circle,transparent 62%,#000 63%,#000 70%,transparent 71%);
+    mask:radial-gradient(circle,transparent 62%,#000 63%,#000 70%,transparent 71%);
+    animation:spinRing 9s linear infinite}
+  @keyframes spinRing{to{transform:translate(-50%,-58%) rotate(360deg)}}
+  h1{
+    font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;letter-spacing:4px;
+    background:linear-gradient(180deg,#fff 10%,var(--cyan) 55%,var(--mint) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 2px 0 rgba(0,40,45,.9)) drop-shadow(0 6px 14px rgba(80,232,244,.35));
+    animation:logoFloat 5s ease-in-out infinite;
+  }
+  @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .tag{color:var(--mut);font-size:11px;letter-spacing:5px;margin:6px 0 2px;transform:translateZ(50px)}
+  .nexa-line{font-size:13px;color:var(--lc);margin-bottom:16px;transform:translateZ(50px)}
+  .nexa-line b{color:var(--cyan)}
+
+  .banner3d{transform:translateZ(46px);margin:6px auto 18px;max-width:340px;position:relative}
+  .banner3d img{
+    width:100%;border-radius:20px;display:block;
+    border:1px solid rgba(80,232,244,.3);
+    box-shadow:0 18px 44px rgba(0,0,0,.55),0 0 34px rgba(80,232,244,.18);
+    animation:bannerFloat 6s ease-in-out infinite;
+  }
+  @keyframes bannerFloat{0%,100%{transform:translateY(0) rotateX(0)}50%{transform:translateY(-7px)}}
+  .banner3d::after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;
+    background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.14) 45%,transparent 60%);
+    background-size:250% 250%;animation:shineMove 5s ease-in-out infinite}
+  @keyframes shineMove{0%,100%{background-position:120% 0}50%{background-position:-20% 0}}
+
+  /* server chip */
+  .server-chip{
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    background:rgba(3,24,27,.8);border:1px solid rgba(80,232,244,.35);color:var(--lc);
+    border-radius:999px;padding:9px 16px;font-size:13px;font-family:inherit;font-weight:600;
+    transform:translateZ(55px);margin-bottom:18px;transition:transform .15s, box-shadow .2s;
+    box-shadow:0 4px 14px rgba(0,0,0,.35);
+  }
+  .server-chip:active{transform:translateZ(55px) scale(.96)}
+  .server-chip .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);animation:blink 2s infinite}
+  @keyframes blink{50%{opacity:.5}}
+  .server-chip .chev{color:var(--cyan);font-size:11px}
+
+  label{display:block;text-align:left;color:var(--lc);font-size:13px;margin-bottom:8px;transform:translateZ(40px)}
+  .numwrap{position:relative;transform:translateZ(40px)}
+  input{
+    width:100%;background:#03181b;border:1px solid rgba(80,232,244,.28);border-radius:16px;
+    color:var(--tx);font-size:18px;padding:15px 16px;outline:none;letter-spacing:1px;font-family:inherit;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  input:focus{border-color:var(--cyan);box-shadow:0 0 0 4px rgba(80,232,244,.14),0 0 22px rgba(80,232,244,.12)}
+  .btn{
+    display:block;width:100%;margin-top:16px;border:none;cursor:pointer;position:relative;overflow:hidden;
+    background:linear-gradient(90deg,var(--cyan),var(--mint));color:#00272b;
+    font-weight:700;font-size:16px;padding:16px;border-radius:999px;font-family:inherit;
+    box-shadow:0 10px 28px rgba(80,232,244,.35),inset 0 1px 0 rgba(255,255,255,.5);
+    transform:translateZ(48px);transition:transform .12s, box-shadow .2s;
+  }
+  .btn::after{content:"";position:absolute;top:0;left:-80%;width:60%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+    transform:skewX(-20deg);animation:btnShine 3.2s ease-in-out infinite}
+  @keyframes btnShine{0%,60%{left:-80%}100%{left:130%}}
+  .btn:active{transform:translateZ(48px) scale(.97)}
+  .btn:disabled{opacity:.55;cursor:wait}
+  .btn:disabled::after{animation:none}
+
+  .spin{width:34px;height:34px;border:3px solid rgba(80,232,244,.2);border-top-color:var(--cyan);
+    border-radius:50%;margin:16px auto 0;animation:sp 1s linear infinite;display:none;transform:translateZ(40px)}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .status{margin-top:14px;font-size:13px;color:var(--lc);min-height:20px;line-height:1.65;transform:translateZ(40px)}
+  .status.err{color:var(--err)}
+
+  .codebox{display:none;margin-top:20px;transform:translateZ(44px)}
+  .codebox.show{display:block;animation:flipIn .7s cubic-bezier(.2,.9,.3,1.25) both}
+  @keyframes flipIn{from{opacity:0;transform:translateZ(44px) rotateX(-70deg)}to{opacity:1;transform:translateZ(44px) rotateX(0)}}
+  .code-inner{
+    background:#03181b;border:1px dashed rgba(80,232,244,.45);border-radius:20px;padding:22px 16px;
+    box-shadow:inset 0 0 30px rgba(80,232,244,.06),0 0 34px rgba(80,232,244,.12);
+    animation:codePulse 2.4s ease-in-out infinite;
+  }
+  @keyframes codePulse{0%,100%{box-shadow:inset 0 0 30px rgba(80,232,244,.06),0 0 22px rgba(80,232,244,.10)}50%{box-shadow:inset 0 0 30px rgba(80,232,244,.10),0 0 44px rgba(80,232,244,.22)}}
+  .codelabel{font-size:11px;color:var(--mut);letter-spacing:3px;margin-bottom:8px}
+  .codename{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;letter-spacing:4px;margin-bottom:2px;
+    background:linear-gradient(90deg,#50E8F4,#6DD5C4,#C7F8FE,#50E8F4);background-size:220% auto;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shine 4s linear infinite;filter:drop-shadow(0 0 10px rgba(80,232,244,.45))}
+  @keyframes shine{to{background-position:220% center}}
+  .code{font-family:'Space Grotesk',monospace;font-size:44px;font-weight:700;letter-spacing:8px;color:var(--cyan);
+    text-shadow:0 0 22px rgba(80,232,244,.6),0 3px 0 rgba(0,40,45,.9);margin-bottom:6px}
+  .timer{font-size:13px;color:var(--mint);margin-bottom:12px}
+  .copybtn{background:rgba(80,232,244,.08);border:1px solid rgba(80,232,244,.45);color:var(--cyan);
+    border-radius:999px;padding:9px 24px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:transform .12s}
+  .copybtn:active{transform:scale(.95)}
+
+  .steps{margin-top:18px;text-align:left;font-size:13px;color:var(--lc);line-height:2.05;
+    background:rgba(80,232,244,.05);border:1px solid rgba(80,232,244,.14);border-radius:16px;padding:14px 18px;transform:translateZ(36px)}
+  .steps b{color:var(--cyan)}
+  .steps .st{display:flex;gap:10px;align-items:flex-start}
+  .steps .n{flex:0 0 22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--mint));
+    color:#00272b;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:5px;
+    box-shadow:0 0 12px rgba(80,232,244,.5)}
+  .foot{margin-top:18px;font-size:11px;color:var(--mut);line-height:1.7;transform:translateZ(30px)}
+  .tabs{display:flex;gap:10px;justify-content:center;margin:16px 0 2px}
+  .tabbtn{flex:1;max-width:190px;padding:11px;border-radius:14px;border:1px solid rgba(80,232,244,.35);background:rgba(80,232,244,.07);color:var(--tx);font-weight:700;font-size:15px;cursor:pointer;transition:all .2s}
+  .tabbtn.active{background:linear-gradient(135deg,var(--cyan),var(--mint));color:#001619;border:none;box-shadow:0 4px 18px rgba(80,232,244,.35)}
+  .qrbox{margin:14px auto 0;text-align:center}
+  .qrbox img{width:260px;height:260px;border-radius:18px;background:#fff;padding:10px;box-shadow:0 8px 30px rgba(80,232,244,.25)}
+  .qrhint{margin:8px 0 2px;color:var(--mut);font-size:14px;line-height:1.7}
+
+  /* ---------- server modal ---------- */
+  .overlay{position:fixed;inset:0;z-index:10;background:rgba(0,10,12,.72);backdrop-filter:blur(6px);
+    display:none;align-items:flex-end;justify-content:center;padding:0}
+  .overlay.show{display:flex}
+  .sheet{
+    width:100%;max-width:480px;max-height:82vh;overflow-y:auto;
+    background:linear-gradient(170deg,#141126,#0d0b22 60%,#0a0f1e);
+    border:1px solid rgba(150,130,255,.25);border-bottom:none;
+    border-radius:26px 26px 0 0;padding:26px 20px 30px;
+    box-shadow:0 -20px 60px rgba(0,0,0,.6),0 0 40px rgba(150,130,255,.12);
+    animation:sheetUp .45s cubic-bezier(.2,.9,.3,1.15) both;transform-style:preserve-3d;
+  }
+  @keyframes sheetUp{from{transform:translateY(70px);opacity:0}to{transform:none;opacity:1}}
+  .sheet h2{font-family:'Space Grotesk',sans-serif;font-size:21px;letter-spacing:.5px;margin-bottom:4px;
+    background:linear-gradient(90deg,#d9c8ff,#9be8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sheet .sub{font-size:12px;color:#9aa4c7;margin-bottom:16px}
+  .srv{
+    display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
+    background:rgba(60,50,120,.28);border:1px solid rgba(150,130,255,.22);color:#e8e6ff;
+    border-radius:16px;padding:14px 16px;margin-bottom:10px;font-family:inherit;
+    transition:transform .15s, border-color .2s, background .2s;
+    animation:srvIn .4s both;
+  }
+  .srv:nth-child(2){animation-delay:.05s}.srv:nth-child(3){animation-delay:.1s}
+  .srv:nth-child(4){animation-delay:.15s}.srv:nth-child(5){animation-delay:.2s}
+  .srv:nth-child(6){animation-delay:.25s}.srv:nth-child(7){animation-delay:.3s}
+  .srv:nth-child(8){animation-delay:.35s}
+  @keyframes srvIn{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+  .srv:active{transform:scale(.98)}
+  .srv.sel{border-color:var(--cyan);background:rgba(80,232,244,.12);box-shadow:0 0 18px rgba(80,232,244,.25)}
+  .srv .ic{font-size:20px}
+  .srv .meta{flex:1}
+  .srv .nm{font-weight:700;font-size:15px;letter-spacing:.5px}
+  .srv .ds{font-size:11px;color:#9aa4c7;margin-top:2px}
+  .srv .ping{font-size:11px;font-weight:700;color:var(--mut);min-width:58px;text-align:right}
+  .srv .pdot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px}
+  .pdot.g{background:#3dff8e;box-shadow:0 0 8px #3dff8e}
+  .pdot.y{background:#ffd23d;box-shadow:0 0 8px #ffd23d}
+  .pdot.r{background:#ff5d5d;box-shadow:0 0 8px #ff5d5d}
+  .pdot.o{background:#555}
+  .closebtn{
+    display:block;width:100%;margin-top:8px;background:transparent;cursor:pointer;
+    border:1px solid rgba(200,180,255,.4);color:#d9c8ff;border-radius:999px;
+    padding:13px;font-size:15px;font-weight:600;font-family:inherit;
+  }
+  .closebtn:active{transform:scale(.98)}
+  #confetti{position:fixed;inset:0;z-index:20;pointer-events:none}
+  @media (max-width:380px){ h1{font-size:28px} .code{font-size:36px;letter-spacing:6px} }
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div>
+<div class="floater f1">💗</div><div class="floater f2">✨</div>
+<div class="floater f3">🤖</div><div class="floater f4">💫</div>
+
+<div class="scene">
+  <div class="tilt" id="tilt">
+    <div class="card">
+      <div class="logo-wrap">
+        <div class="ring"></div>
+        <h1>NEXORA-MD</h1>
+      </div>
+      <div class="tag">WHATSAPP PAIRING</div>
+      <div class="nexa-line">Main <b>Nexa</b> hoon 💗 — chalo bot connect karte hain!</div>
+
+      <div class="tabs">
+        <button class="tabbtn active" id="tabCode" type="button">🔢 Code</button>
+        <button class="tabbtn" id="tabQR" type="button">📷 QR Scan</button>
+      </div>
+
+      <div class="banner3d">
+        <img src="assets/nexora-banner.jpg" alt="NEXORA-MD">
+      </div>
+
+      <button class="server-chip" id="serverChip" type="button">
+        <span class="dot" id="chipDot"></span>
+        <span id="chipText">⚡ Auto server</span>
+        <span class="chev">▾</span>
+      </button>
+
+      <div id="form">
+        <label for="num">Apna WhatsApp number likhein (country code ke saath)</label>
+        <div class="numwrap">
+          <input id="num" type="tel" inputmode="numeric" placeholder="923001234567" maxlength="15" autocomplete="off">
+        </div>
+        <button class="btn" id="go">✨ Code Hasil Karo</button>
+      </div>
+
+      <div class="spin" id="spin"></div>
+      <div class="status" id="status"></div>
+
+      <div class="codebox" id="codebox">
+        <div class="code-inner">
+          <div class="codename">💗 NEXORA-MD</div>
+          <div class="codelabel">APKA PAIRING CODE</div>
+          <div class="code" id="code">--------</div>
+          <div class="timer" id="timer"></div>
+          <button class="copybtn" id="copy">📋 Code Copy Karo</button>
+        </div>
+        <div class="steps">
+          <div class="st"><span class="n">1</span><span>WhatsApp kholein → <b>⋮</b> → <b>Linked devices</b></span></div>
+          <div class="st"><span class="n">2</span><span><b>Link a device</b> dabayein</span></div>
+          <div class="st"><span class="n">3</span><span><b>"Link with phone number instead"</b> chunein</span></div>
+          <div class="st"><span class="n">4</span><span>Upar wala code likhein — bas, bot connect! 🎉</span></div>
+        </div>
+      </div>
+
+      <div id="qrPane" style="display:none">
+        <div class="qrhint">WhatsApp kholein → <b>⋮</b> → <b>Linked devices</b> → <b>Link a device</b> dabayein, phir neeche wala QR scan karein 📷<br>QR har ~20 second mein khud naya ho jata hai.</div>
+        <button class="btn" id="qrgo">📷 QR Dikhao</button>
+        <div class="spin" id="qrspin" style="display:none"></div>
+        <div class="status" id="qrstatus"></div>
+        <div class="qrbox" id="qrbox" style="display:none">
+          <img id="qrimg" alt="WhatsApp QR code">
+          <div class="timer" id="qrtimer"></div>
+        </div>
+      </div>
+
+      <div class="foot">Code sirf ~75 second valid rehta hai — milte hi foran WhatsApp mein daalein.<br>Koi bhi apne number se bot pair kar sakta hai 💗</div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="sheet">
+    <h2>Select a server</h2>
+    <div class="sub">Tez tareen server khud select ho jayega ⚡ — ya apni marzi ka chunein</div>
+    <div id="srvList"></div>
+    <button class="closebtn" id="closeSheet">Close</button>
+  </div>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script>
+/* ================= servers ================= */
+var RELAY_URLS = {
+  damus:  'wss://relay.damus.io',
+  primal: 'wss://relay.primal.net',
+  snort:  'wss://relay.snort.social'
+};
+/* Har server ek relay-routing profile hai — worker teeno relays par sunta hai,
+   is liye phone se jo relay sab se tez jawab de, usi se pairing foran hoti hai. */
+var SERVERS = [
+  { id:'auto',     name:'⚡ Auto',  desc:'Sab se tez relay khud chunein (recommended)', relays:['damus','primal','snort'] },
+  { id:'server11', name:'server11', desc:'Primary: damus relay',  relays:['damus','primal','snort'] },
+  { id:'server12', name:'server12', desc:'Primary: primal relay', relays:['primal','damus','snort'] },
+  { id:'server13', name:'server13', desc:'Primary: snort relay',  relays:['snort','damus','primal'] },
+  { id:'server14', name:'server14', desc:'damus + primal', relays:['damus','primal'] },
+  { id:'server15', name:'server15', desc:'primal + snort', relays:['primal','snort'] },
+  { id:'server16', name:'server16', desc:'snort + damus',  relays:['snort','damus'] }
+];
+var relayPing = {};   /* damus: ms */
+var pingDone = false;
+
+function pingRelays(cb){
+  var keys = Object.keys(RELAY_URLS), pending = keys.length;
+  keys.forEach(function(k){
+    var url = RELAY_URLS[k], t0 = performance.now(), settled = false, ws = null;
+    function fin(ms){ if (settled) return; settled = true; relayPing[k] = ms; try{ ws && ws.close(); }catch(e){}
+      if (--pending === 0){ pingDone = true; cb && cb(); } }
+    try{
+      ws = new WebSocket(url);
+      ws.onopen = function(){ fin(Math.round(performance.now() - t0)); };
+      ws.onerror = function(){ fin(-1); };
+      setTimeout(function(){ fin(-1); }, 4000);
+    }catch(e){ fin(-1); }
+  });
+}
+function serverPing(s){
+  var p = relayPing[s.relays[0]];
+  return (p === undefined) ? null : p;
+}
+function pingClass(ms){
+  if (ms === null || ms === undefined) return ['o','…'];
+  if (ms < 0)  return ['r','off'];
+  if (ms < 450)  return ['g', ms + 'ms'];
+  if (ms < 1400) return ['y', ms + 'ms'];
+  return ['r', ms + 'ms'];
+}
+function bestServer(){
+  var best = SERVERS[1], bestMs = Infinity;
+  SERVERS.slice(1).forEach(function(s){
+    var p = serverPing(s);
+    if (p !== null && p >= 0 && p < bestMs){ bestMs = p; best = s; }
+  });
+  return best;
+}
+function storedServerId(){
+  try{ return localStorage.getItem('nexora_server') || 'auto'; }catch(e){ return 'auto'; }
+}
+function activeServer(){
+  var id = storedServerId(), s = null;
+  SERVERS.forEach(function(x){ if (x.id === id) s = x; });
+  if (!s) s = SERVERS[0];
+  if (s.id === 'auto') s = bestServer();
+  return s;
+}
+function updateChip(){
+  var stored = storedServerId(), s = activeServer(),
+      el = document.getElementById('chipText'),
+      dot = document.getElementById('chipDot');
+  if (stored === 'auto' || !pingDone){ el.textContent = '⚡ Auto server'; dot.style.background=''; dot.style.boxShadow=''; return; }
+  var pc = pingClass(serverPing(s));
+  el.textContent = '🖥 ' + s.name + ' • ' + pc[1];
+  dot.style.background = pc[0]==='g' ? 'var(--ok)' : pc[0]==='y' ? '#ffd23d' : '#ff5d5d';
+  dot.style.boxShadow = '0 0 8px ' + dot.style.background;
+}
+
+/* ================= pairing (Nostr relay) ================= */
+var REQ_TAG = 'boxxaxmd-pair-req', RES_TAG = 'boxxaxmd-pair-res';
+var WORKER_PUBKEY = '16303e6d2afb12f8723aa3dc73ae9159bfb57452b6bb0d9214fd3d779eb5a12f';
+var TIMEOUT_MS = 175000, CODE_TTL = 75;
+
+var numInp = document.getElementById('num'),
+    goBtn = document.getElementById('go'),
+    spinEl = document.getElementById('spin'),
+    statusEl = document.getElementById('status'),
+    codebox = document.getElementById('codebox'),
+    codeEl = document.getElementById('code'),
+    timerEl = document.getElementById('timer');
+
+function setStatus(msg, isErr){ statusEl.textContent = msg || ''; statusEl.className = 'status' + (isErr ? ' err' : ''); }
+function randHex(n){ var a = new Uint8Array(n); crypto.getRandomValues(a);
+  return Array.prototype.map.call(a, function(b){ return ('0' + b.toString(16)).slice(-2); }).join(''); }
+function loadNostr(){
+  if (window.__nostrP) return window.__nostrP;
+  window.__nostrP = new Promise(function(res, rej){
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/nostr-tools@2.10.4/lib/nostr.bundle.js';
+    s.onload = function(){ res(window.NostrTools); };
+    s.onerror = function(){ rej(new Error('relay lib load nahi hui')); };
+    document.head.appendChild(s);
+  });
+  return window.__nostrP;
+}
+/* Persistent relay pool — page load par hi relays se connect (Boss: code mein
+   delay na ho). Har request par naya WebSocket handshake ~1-2s bachata hai. */
+var pool = {};
+function poolEnsure(){
+  var s = activeServer(), want = s.relays.slice(), changed = false;
+  want.forEach(function(k){
+    var w = pool[k];
+    if (w && (w.readyState === 0 || w.readyState === 1)) return;
+    try { w = new WebSocket(RELAY_URLS[k]); } catch(e){ return; }
+    pool[k] = w; changed = true;
+    w.onclose = function(){ if (pool[k] === w){ delete pool[k]; setTimeout(poolEnsure, 3000); } };
+    w.onerror = function(){ try{ w.close(); }catch(e){} };
+  });
+  Object.keys(pool).forEach(function(k){
+    if (want.indexOf(k) < 0){ try{ pool[k].close(); }catch(e){} delete pool[k]; }
+  });
+  return changed;
+}
+function relayRequest(payload, timeoutMs, server){
+  return loadNostr().then(function(NT){
+    return new Promise(function(resolve, reject){
+      var sk = NT.generateSecretKey(), pk = NT.getPublicKey(sk);
+      var reqId = randHex(16), done = false, conns = [], listeners = [];
+      function cleanup(){
+        clearTimeout(timer);
+        listeners.forEach(function(l){ try{ l.ws.removeEventListener('message', l.fn); }catch(e){} });
+        conns.forEach(function(w){ try { w.close(); } catch(e){} });
+      }
+      function onMsg(ev){
+        try {
+          var m = JSON.parse(ev.data);
+          if (m[0] === 'EVENT' && m[2] && m[2].pubkey === WORKER_PUBKEY){
+            var c = JSON.parse(m[2].content);
+            if (c && c.id === reqId && !done){ done = true; cleanup(); resolve(c); }
+          }
+        } catch(e){}
+      }
+      var timer = setTimeout(function(){ if (!done){ done = true; cleanup(); reject(new Error('timeout')); } }, timeoutMs);
+      payload.id = reqId;
+      var job = NT.finalizeEvent({
+        kind: 1, created_at: Math.floor(Date.now()/1000),
+        tags: [['t', REQ_TAG], ['id', reqId]],
+        content: JSON.stringify(payload),
+        pubkey: pk
+      }, sk);
+      var sub = JSON.stringify(['REQ', 'bx' + reqId, { kinds: [1], '#t': [RES_TAG], since: Math.floor(Date.now()/1000) - 10 }]);
+      var pub = JSON.stringify(['EVENT', job]);
+      server.relays.forEach(function(k){
+        var w = pool[k];
+        if (w && w.readyState === 1){
+          var fn = function(ev){ onMsg(ev); };
+          w.addEventListener('message', fn);
+          listeners.push({ws:w, fn:fn});
+          try { w.send(sub); w.send(pub); } catch(e){}
+          return;
+        }
+        var ws; try { ws = new WebSocket(RELAY_URLS[k]); } catch(e){ return; }
+        ws.onopen = function(){ try { ws.send(sub); ws.send(pub); } catch(e){} };
+        ws.onmessage = onMsg;
+        ws.onerror = function(){};
+        conns.push(ws);
+      });
+      if (!conns.length && !listeners.length){ done = true; cleanup(); reject(new Error('network')); }
+    });
+  });
+}
+function requestCode(number, server){
+  return relayRequest({ number: number }, TIMEOUT_MS, server);
+}
+function requestQR(server){
+  return relayRequest({ action: 'qr' }, 60000, server);
+}
+
+var tickInt = null;
+function startCountdown(){
+  var left = CODE_TTL;
+  clearInterval(tickInt);
+  function draw(){ timerEl.textContent = '⏳ ' + left + ' second baaqi — foran WhatsApp mein daalein'; }
+  draw();
+  tickInt = setInterval(function(){ left--; if (left <= 0){ clearInterval(tickInt); timerEl.textContent = '⌛ Code expire ho gaya — dobara "Code Hasil Karo" dabayein'; } else draw(); }, 1000);
+}
+document.getElementById('copy').onclick = function(){
+  var t = codeEl.textContent;
+  if (navigator.clipboard) navigator.clipboard.writeText(t);
+  this.textContent = 'Copy ho gaya ✓'; var b = this;
+  setTimeout(function(){ b.textContent = '📋 Code Copy Karo'; }, 2000);
+};
+goBtn.onclick = function(){
+  var number = numInp.value.replace(/\D/g, '');
+  codebox.classList.remove('show');
+  if (number.length < 10 || number.length > 15){ setStatus('Sahi number likhein — country code ke saath, sirf digits. Masalan: 923001234567', true); numInp.focus(); return; }
+  var server = activeServer(), stored = storedServerId();
+  goBtn.disabled = true; spinEl.style.display = 'block';
+  setStatus('🖥 ' + (stored === 'auto' ? 'tez tareen server' : server.name) + ' se WhatsApp code manga ja raha hai… (aam tor par chand second lagte hain, page band na karein)');
+  requestCode(number, server).then(function(res){
+    spinEl.style.display = 'none'; goBtn.disabled = false;
+    if (res.alreadyConnected){ setStatus('Bot pehle se connected hai ✓ — kuch karne ki zaroorat nahi.', false); return; }
+    if (res.error){
+      var msg = res.error;
+      if (res.cooldownSeconds) msg += ' (' + Math.ceil(res.cooldownSeconds/60) + ' min baad dobara try karein)';
+      setStatus(msg, true); return;
+    }
+    if (res.code){
+      codeEl.textContent = res.code;
+      codebox.classList.add('show');
+      startCountdown();
+      confettiBurst();
+      setStatus(res.reused ? 'Pehla wala code abhi valid hai — yehi istemal karein.' : '🎉 Code mil gaya! Neeche steps follow karein.', false);
+      return;
+    }
+    setStatus('Kuch garbar hui — dobara try karein.', true);
+  }).catch(function(e){
+    spinEl.style.display = 'none'; goBtn.disabled = false;
+    setStatus(e && e.message === 'timeout'
+      ? 'Jawab nahi aaya (2 min). Koi aur server try karein ya internet check karke dobara dabayein.'
+      : 'Relay se rabta nahi ho saka — koi aur server select karke dobara try karein.', true);
+  });
+};
+numInp.addEventListener('keydown', function(e){ if (e.key === 'Enter') goBtn.click(); });
+
+/* WARMUP — number likhte hi server ko khabar: naya number ho to uska WhatsApp
+   socket background mein connect hona shuru ho jata hai, taake "Code Hasil
+   Karo" dabane par code foran mile. Sirf ek baar per number, khamoshi se. */
+var warmedNum = '', warmTimer = null;
+numInp.addEventListener('input', function(){
+  clearTimeout(warmTimer);
+  warmTimer = setTimeout(function(){
+    var n = numInp.value.replace(/\D/g, '');
+    if (n.length < 10 || n.length > 15 || n === warmedNum) return;
+    warmedNum = n;
+    relayRequest({ action:'warmup', number:n }, 60000, activeServer()).then(function(){}, function(){});
+  }, 1500);
+});
+
+/* ================= QR tab ================= */
+var tabCode = document.getElementById('tabCode'),
+    tabQR = document.getElementById('tabQR'),
+    formEl = document.getElementById('form'),
+    qrPane = document.getElementById('qrPane'),
+    qrGo = document.getElementById('qrgo'),
+    qrSpin = document.getElementById('qrspin'),
+    qrStatus = document.getElementById('qrstatus'),
+    qrBox = document.getElementById('qrbox'),
+    qrImg = document.getElementById('qrimg'),
+    qrTimer = document.getElementById('qrtimer'),
+    footEl = document.querySelector('.foot');
+var qrPollInt = null, qrTickInt = null, qrMode = false, qrFetching = false;
+
+function setQrStatus(msg, isErr){ qrStatus.textContent = msg || ''; qrStatus.className = 'status' + (isErr ? ' err' : ''); }
+function stopQrPoll(){
+  if (qrPollInt){ clearInterval(qrPollInt); qrPollInt = null; }
+  if (qrTickInt){ clearInterval(qrTickInt); qrTickInt = null; }
+}
+function switchTab(which){
+  qrMode = (which === 'qr');
+  tabCode.classList.toggle('active', !qrMode);
+  tabQR.classList.toggle('active', qrMode);
+  formEl.style.display = qrMode ? 'none' : '';
+  codebox.classList.remove('show');
+  footEl.style.display = qrMode ? 'none' : '';
+  spinEl.style.display = 'none';
+  if (!qrMode) setStatus('');
+  qrPane.style.display = qrMode ? '' : 'none';
+  stopQrPoll();
+  if (qrMode){ qrBox.style.display = 'none'; setQrStatus('QR lene ke liye "📷 QR Dikhao" dabayein.'); }
+}
+tabCode.onclick = function(){ switchTab('code'); };
+tabQR.onclick = function(){ switchTab('qr'); };
+
+function startQrCountdown(){
+  var left = 20;
+  clearInterval(qrTickInt);
+  function draw(){ qrTimer.textContent = '⏳ ' + left + ' second mein naya QR'; }
+  draw();
+  qrTickInt = setInterval(function(){
+    left--;
+    if (left <= 0){ clearInterval(qrTickInt); qrTimer.textContent = '⌛ Naya QR aa raha hai…'; }
+    else draw();
+  }, 1000);
+}
+function fetchQR(){
+  if (!qrMode || qrFetching) return; // overlap guard: pichli request abhi chal rahi hai
+  qrFetching = true;
+  var server = activeServer();
+  qrGo.disabled = true; qrSpin.style.display = 'block';
+  setQrStatus('QR liya ja raha hai… (aam tor par chand second lagte hain, page band na karein)');
+  requestQR(server).then(function(res){
+    qrFetching = false;
+    qrSpin.style.display = 'none'; qrGo.disabled = false;
+    if (!qrMode) return;
+    if (res.alreadyConnected){ setQrStatus('Bot pehle se connected hai ✓ — kuch karne ki zaroorat nahi.'); stopQrPoll(); return; }
+    if (res.error){ setQrStatus(res.error, true); return; }
+    if (res.qr){
+      qrImg.src = res.qr;
+      qrBox.style.display = '';
+      startQrCountdown();
+      setQrStatus('📷 Upar wala QR WhatsApp se scan karein — har ~20 second mein khud naya ho jata hai.', false);
+      return;
+    }
+    setQrStatus('Kuch garbar hui — dobara try karein.', true);
+  }).catch(function(e){
+    qrFetching = false;
+    qrSpin.style.display = 'none'; qrGo.disabled = false;
+    if (!qrMode) return;
+    setQrStatus(e && e.message === 'timeout'
+      ? 'Jawab nahi aaya (1 min). Koi aur server try karein ya dobara dabayein.'
+      : 'Relay se rabta nahi ho saka — dobara try karein.', true);
+  });
+}
+qrGo.onclick = function(){
+  fetchQR();
+  stopQrPoll();
+  qrPollInt = setInterval(fetchQR, 18000); // QR rotate hota rehta hai — taaza lete raho
+};
+
+/* ================= server sheet ================= */
+var overlay = document.getElementById('overlay'),
+    srvList = document.getElementById('srvList');
+function renderServers(){
+  var stored = storedServerId();
+  srvList.innerHTML = '';
+  SERVERS.forEach(function(s){
+    var b = document.createElement('button');
+    b.className = 'srv' + (s.id === stored ? ' sel' : '');
+    var isAuto = (s.id === 'auto');
+    var pc = isAuto ? ['g','auto'] : pingClass(serverPing(s));
+    b.innerHTML = '<span class="ic">' + (isAuto ? '⚡' : '🖥') + '</span>' +
+      '<span class="meta"><span class="nm">' + s.name + '</span><br><span class="ds">' + s.desc + '</span></span>' +
+      '<span class="ping"><span class="pdot ' + pc[0] + '"></span>' + pc[1] + '</span>';
+    b.onclick = function(){
+      try{ localStorage.setItem('nexora_server', s.id); }catch(e){}
+      updateChip(); renderServers(); poolEnsure();
+      setTimeout(function(){ overlay.classList.remove('show'); }, 250);
+      setStatus(isAuto ? '⚡ Auto server select — sab se tez relay use hoga.' : '🖥 ' + s.name + ' select ho gaya.');
+    };
+    srvList.appendChild(b);
+  });
+}
+document.getElementById('serverChip').onclick = function(){
+  overlay.classList.add('show');
+  renderServers();
+  if (!pingDone) pingRelays(function(){ renderServers(); updateChip(); });
+};
+document.getElementById('closeSheet').onclick = function(){ overlay.classList.remove('show'); };
+overlay.addEventListener('click', function(e){ if (e.target === overlay) overlay.classList.remove('show'); });
+
+/* ================= 3D tilt ================= */
+(function(){
+  var tilt = document.getElementById('tilt'), rx = 0, ry = 0, tx = 0, ty = 0, fine = false;
+  try{ fine = window.matchMedia('(pointer:fine)').matches; }catch(e){}
+  if (!fine) return;
+  document.addEventListener('pointermove', function(e){
+    var cx = window.innerWidth/2, cy = window.innerHeight/2;
+    tx = ((e.clientX - cx)/cx) * 7;
+    ty = -((e.clientY - cy)/cy) * 7;
+  });
+  (function loop(){
+    rx += (ty - rx) * .06; ry += (tx - ry) * .06;
+    tilt.style.transform = 'rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+    requestAnimationFrame(loop);
+  })();
+  /* orbs parallax */
+  var orbs = document.querySelectorAll('.orb');
+  document.addEventListener('pointermove', function(e){
+    var cx = (e.clientX/window.innerWidth - .5), cy = (e.clientY/window.innerHeight - .5);
+    orbs.forEach(function(o,i){
+      var d = (i+1)*14;
+      o.style.marginLeft = (-cx*d) + 'px'; o.style.marginTop = (-cy*d) + 'px';
+    });
+  });
+})();
+
+/* ================= starfield ================= */
+(function(){
+  var c = document.getElementById('stars'), x = c.getContext('2d'), stars = [], W, H;
+  function size(){ W = c.width = innerWidth; H = c.height = innerHeight; }
+  size(); addEventListener('resize', size);
+  for (var i=0;i<140;i++) stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.4+.3,s:Math.random()*.6+.15,p:Math.random()*6.28});
+  (function draw(t){
+    x.clearRect(0,0,W,H);
+    stars.forEach(function(s){
+      s.p += .02;
+      var a = .35 + .35*Math.sin(s.p);
+      x.globalAlpha = a; x.fillStyle = '#bff3ff';
+      x.beginPath(); x.arc(s.x*W, s.y*H, s.r, 0, 6.28); x.fill();
+      s.y -= s.s/H*2; if (s.y < 0) s.y = 1;
+    });
+    x.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  })();
+})();
+
+/* ================= confetti ================= */
+function confettiBurst(){
+  var c = document.getElementById('confetti'), x = c.getContext('2d');
+  c.width = innerWidth; c.height = innerHeight;
+  var colors = ['#50E8F4','#6DD5C4','#ffd23d','#ff8ab3','#d9c8ff','#7dffa8'];
+  var ps = [];
+  for (var i=0;i<130;i++) ps.push({
+    x: innerWidth/2, y: innerHeight*0.35,
+    vx:(Math.random()-.5)*13, vy: Math.random()*-11-3,
+    s: Math.random()*7+4, r: Math.random()*6.28, vr:(Math.random()-.5)*.3,
+    col: colors[i%colors.length], life: 1
+  });
+  var frames = 0;
+  (function tick(){
+    x.clearRect(0,0,c.width,c.height);
+    ps.forEach(function(p){
+      p.x+=p.vx; p.y+=p.vy; p.vy+=.32; p.vx*=.985; p.r+=p.vr; p.life-=.008;
+      x.save(); x.globalAlpha=Math.max(p.life,0); x.translate(p.x,p.y); x.rotate(p.r);
+      x.fillStyle=p.col; x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6); x.restore();
+    });
+    if (++frames < 160) requestAnimationFrame(tick); else x.clearRect(0,0,c.width,c.height);
+  })();
+}
+
+/* boot: silent ping so chip shows live speed + relays pre-connect (code foran mile) */
+setTimeout(function(){ if (!pingDone) pingRelays(function(){ updateChip(); }); }, 900);
+updateChip();
+setTimeout(poolEnsure, 1200);
+</script>
+</body>
+</html>

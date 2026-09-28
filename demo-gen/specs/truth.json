@@ -1,0 +1,18 @@
+{
+ "cmd": "truth",
+ "desc": "Truth sawal (game)",
+ "owner": false,
+ "admin": false,
+ "example": ".truth",
+ "output_type": "text",
+ "output_text": "😳 *TRUTH* 💗\n\nTumhara crush kaun hai? 👀\n\n_Sach sach jawab dena!_",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dtruth* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

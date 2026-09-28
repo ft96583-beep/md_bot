@@ -1,0 +1,18 @@
+{
+ "cmd": "quote",
+ "desc": "Aaj ka motivational quote",
+ "owner": false,
+ "admin": false,
+ "example": ".quote",
+ "output_type": "text",
+ "output_text": "💡 *Quote*\n\n\"Jo log tumhein giraana chahte hain, unhein dekh ke muskurao — tum un se upar ho.\" 😊",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dquote* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

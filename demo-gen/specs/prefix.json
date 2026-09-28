@@ -1,0 +1,19 @@
+{
+ "cmd": "prefix",
+ "desc": "Command prefix change karo (owner)",
+ "owner": true,
+ "admin": false,
+ "example": ".prefix !",
+ "output_type": "text",
+ "output_text": "⌨️ Maujooda prefix: *.*\n\nChange: *.prefix <naya>* (ek character, masalan !)",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "👑 Sirf *owner* (Boss) ye command chala sakta hai",
+  "🎬 *.dprefix* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

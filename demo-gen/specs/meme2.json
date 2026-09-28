@@ -1,0 +1,19 @@
+{
+ "cmd": "meme2",
+ "desc": "Meme banao (doosra style)",
+ "owner": false,
+ "admin": false,
+ "example": ".meme Upar wala | Neeche wala",
+ "output_type": "text",
+ "output_text": "😂 Meme ban raha hai...",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎨 Media wali command hai — reply karke chalao",
+  "🎬 *.dmeme2* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

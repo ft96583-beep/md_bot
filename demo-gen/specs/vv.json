@@ -1,0 +1,20 @@
+{
+ "cmd": "vv",
+ "desc": "View-once unlock — media jisne use kiya uski apni private chat mein (reply); \"s\" se photo ka sticker",
+ "owner": false,
+ "admin": false,
+ "example": ".vv",
+ "output_type": "text",
+ "output_text": "❌ Kisi view-once photo/video/voice ke reply mein *.vv* likhein (photo ka sticker chahiye to *.vv s*).\n\n💡 *Tip:* View-once par seedha koi sticker ya word se reply karein — bina .vv likhe khud-ba-khud yourself mein aa jayega.",
+ "steps": [
+  "Koi *view-once* photo/video kholo 👁️",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "👁️ Kisi *view-once* photo/video/voice ke *reply* mein likho",
+  "💬 Seedha *sticker* ya koi *word* se reply par bhi auto yourself mein jata hai",
+  "✨ *.vv s* = photo ka *sticker* bana kar bhejta hai"
+ ],
+ "time": "2:47 pm"
+}

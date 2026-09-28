@@ -1,0 +1,20 @@
+{
+ "cmd": "hidetag",
+ "desc": "Chhupa tag — sab ko bina naam liye notify (admin)",
+ "owner": false,
+ "admin": true,
+ "example": ".hidetag Salam sab ko!",
+ "output_type": "text",
+ "output_text": "👥 Ye command sirf *group* mein chalti hai\n🛡️ Tumhein aur *bot ko* dono ko admin hona chahiye\n⚡ Group mein bhejo — bot foran action lega",
+ "steps": [
+  "Bot jis *group* mein hai, wahan jao 👥",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Bot foran action lega — koi lamba intezar nahi ⚡"
+ ],
+ "notes": [
+  "👥 Ye command sirf *group* mein kaam karti hai",
+  "🛡️ Tumhein aur *bot ko* dono ko admin hona zaroori hai",
+  "💡 Demo chat mein nahi — asal group mein try karo"
+ ],
+ "time": "2:47 pm"
+}

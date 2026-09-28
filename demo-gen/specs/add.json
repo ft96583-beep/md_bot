@@ -1,0 +1,19 @@
+{
+ "cmd": "add",
+ "desc": "Number se member add karo (admin)",
+ "owner": false,
+ "admin": true,
+ "example": ".add 923001234567",
+ "output_type": "text",
+ "output_text": "❌ Usage: *.add <number with country code>*\nMasalan: .add 923001234567",
+ "steps": [
+  "Group kholo — number *country code* ke saath likho",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🛡️ Is ke liye *group admin* hona zaroori hai",
+  "🎬 *.dadd* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

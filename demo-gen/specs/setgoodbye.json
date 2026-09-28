@@ -1,0 +1,19 @@
+{
+ "cmd": "setgoodbye",
+ "desc": "Goodbye ka custom text set karo (admin)",
+ "owner": false,
+ "admin": true,
+ "example": ".setgoodbye Allah Hafiz! 👋",
+ "output_type": "text",
+ "output_text": "📝 Maujooda goodbye text:\n_(default)_\n\nSet karo: *.setgoodbye Allah hafiz @user! 👋*\n(@user = jaane wale ka naam)",
+ "steps": [
+  "Bot jis *group* mein hai, wahan jao 👥",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🛡️ Is ke liye *group admin* hona zaroori hai",
+  "🎬 *.dsetgoodbye* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

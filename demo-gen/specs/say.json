@@ -1,0 +1,18 @@
+{
+ "cmd": "say",
+ "desc": "Text ko awaz mein suno (voice note)",
+ "owner": false,
+ "admin": false,
+ "example": ".say Assalam o Alaikum Boss!",
+ "output_type": "text",
+ "output_text": "❌ Usage: *.say <text>*\nMasalan: .say Assalam o Alaikum Boss\nEnglish awaz: .say en Hello Boss",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🎬 *.dsay* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

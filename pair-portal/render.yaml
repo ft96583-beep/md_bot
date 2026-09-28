@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: nexora-pair-portal
+    runtime: node
+    buildCommand: npm install
+    startCommand: node portal.js
+    plan: free
+    # PORT Render khud deta hai — portal usay use karta hai

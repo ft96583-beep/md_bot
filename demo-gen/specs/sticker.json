@@ -1,0 +1,18 @@
+{
+ "cmd": "sticker",
+ "desc": "Photo → sticker (photo ke reply mein)",
+ "owner": false,
+ "admin": false,
+ "example": ".sticker",
+ "output_type": "text",
+ "output_text": "❌ Kisi photo ke reply mein *.sticker* likhein.",
+ "steps": [
+  "Jis *photo* par sticker banana hai, us message par *reply* karo",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Kuch ghalat ho to bot *sahi tareeqa* khud batayega 💡"
+ ],
+ "notes": [
+  "🎬 *.dsticker* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}

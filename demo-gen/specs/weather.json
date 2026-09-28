@@ -1,0 +1,18 @@
+{
+ "cmd": "weather",
+ "desc": "Kisi sheher ka mausam",
+ "owner": false,
+ "admin": false,
+ "example": ".weather Lahore",
+ "output_type": "text",
+ "output_text": "🌦️ *Karachi, Pakistan*\n\n☀️ Saaf aasmaan\n🌡️ Abhi: *34.9°C* (Max 35.9° / Min 27.6°)\n🌧️ Barish ka chance: *2%*\n💧 Nami: 49%\n💨 Hawa: 13.9 km/h",
+ "steps": [
+  "NEXORA-MD wali chat kholo 💬",
+  "Neeche wala message likho aur *bhejo* ➤",
+  "Agla scene dekho — *asli* demo mein bot ka jawab 👇"
+ ],
+ "notes": [
+  "🎬 *.dweather* likh kar ye demo kabhi bhi dobara dekho"
+ ],
+ "time": "2:47 pm"
+}
