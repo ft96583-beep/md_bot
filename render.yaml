@@ -1,7 +1,4 @@
-# ─── BOXXAXMD · Render one-click deploy ──────────
-# Render → New → Blueprint → repo select karein, ye file khud sab set kar degi.
-# Pairing ke baad WhatsApp session Upstash Redis mein save rehta hai
-# (free tier ki disk ephemeral hai — file session kaam nahi karegi).
+# BOXXAXMD · Render deploy
 services:
   - type: web
     name: boxxax-md-bot
@@ -12,10 +9,10 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: OWNER_NUMBER
-        sync: false # Apna WhatsApp number (country code ke saath, bina + ke), masalan 923001234567
+        sync: false
       - key: PORT
-        sync: false # Aam tor par khaali chhorein — Render apna PORT khud inject karta hai
+        sync: false
       - key: UPSTASH_REDIS_REST_URL
-        sync: false # Upstash dashboard → Redis → REST URL (https://...upstash.io)
+        sync: false
       - key: UPSTASH_REDIS_REST_TOKEN
-        sync: false # Upstash dashboard → Redis → REST token
+        sync: false
