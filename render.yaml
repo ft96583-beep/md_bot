@@ -1,0 +1,18 @@
+# BOXXAXMD · Render deploy
+services:
+  - type: web
+    name: boxxax-md-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: OWNER_NUMBER
+        sync: false
+      - key: PORT
+        sync: false
+      - key: UPSTASH_REDIS_REST_URL
+        sync: false
+      - key: UPSTASH_REDIS_REST_TOKEN
+        sync: false
